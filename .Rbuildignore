@@ -2,3 +2,6 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^data-raw$
+^inst/extdata$
+^README\.Rmd$
+^\.github$

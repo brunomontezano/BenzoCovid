@@ -1,0 +1,28 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# BenzoCovid
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/brunomontezano/BenzoCovid/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/brunomontezano/BenzoCovid/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
+## Installation
+
+You can install the development version of BenzoCovid like so:
+
+``` r
+remotes::install_github("brunomontezano/BenzoCovid")
+```
