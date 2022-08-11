@@ -3,7 +3,7 @@ pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   all_waves_eda: all_waves_eda.html
-last_built: 2022-08-11T19:56Z
+last_built: 2022-08-11T21:05Z
 urls:
   reference: https://brunomontezano.github.io/BenzoCovid/reference
   article: https://brunomontezano.github.io/BenzoCovid/articles
