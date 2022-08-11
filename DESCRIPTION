@@ -1,10 +1,10 @@
 Package: BenzoCovid
-Title: Data Analysis Project of Benzodiazepines in COVID
+Title: Data Analysis Project of Benzodiazepine Use in COVID-19 pandemic
 Version: 0.1
 Authors@R: 
     person("Bruno", "Braga Montezano", , "brunodoyt@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-4627-1776"))
-Description: Demonstrate data analysis pipeline of the present project.
+Description: Demonstrate data analysis pipeline of the present project about benzodiazepine use in the COVID-19 pandemic.
 License: CC BY 4.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -12,7 +12,8 @@ RoxygenNote: 7.2.1
 Depends: 
     R (>= 2.10)
 LazyData: true
-URL: https://github.com/brunomontezano/BenzoCovid
+URL: https://github.com/brunomontezano/BenzoCovid,
+    https://brunomontezano.github.io/BenzoCovid/
 BugReports: https://github.com/brunomontezano/BenzoCovid/issues
 Suggests: 
     knitr,
