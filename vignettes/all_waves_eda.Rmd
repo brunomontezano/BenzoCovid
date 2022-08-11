@@ -29,7 +29,12 @@ First, let's take a glimpse at the dataset.
 dplyr::glimpse(all_waves)
 ```
 
-As we can see in the `skim`, we don't have any variable with missing values.
+```{r missing}
+all_waves |> 
+    purrr::map_dbl(\(x) sum(is.na(x)))
+```
+
+As we can see in the output above, we don't have any variable with missing values.
 That's nice!
 
 ## Anxiety and depression levels by wave

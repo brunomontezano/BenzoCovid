@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# BenzoCovid <a href='https://github.com/brunomontezano/BenzoCovid/'><img src='logo.png' align="right" height="139" /></a>
+# BenzoCovid <img src="man/figures/hexlogo.png" align="right" width = "120px"/>
 
 <!-- badges: start -->
 <!-- badges: end -->

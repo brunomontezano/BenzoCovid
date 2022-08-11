@@ -141,20 +141,53 @@ for the exploratory data analysis.</p>
 <span><span class="co">#&gt; $ gad_total_w1              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12, 12, 12, 17, 7, 14, 18, 17, 18, 11, 3, 0,…</span></span>
 <span><span class="co">#&gt; $ gad_total_w2              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5, 11, 15, 21, 6, 21, 20, 15, 13, 15, 5, 5, …</span></span>
 <span><span class="co">#&gt; $ gad_total_w3              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 16, 21, 20, 4, 16, 18, 15, 19, 9, 2, 6, 1…</span></span></code></pre></div>
-<p>As we can see in the <code>skim</code>, we don’t have any variable
-with missing values. That’s nice!</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">all_waves</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_dbl</a></span><span class="op">(</span>\<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                       age                       sex                     color </span></span>
+<span><span class="co">#&gt;                         0                         0                         0 </span></span>
+<span><span class="co">#&gt;                 education                     state                    region </span></span>
+<span><span class="co">#&gt;                         0                         0                         0 </span></span>
+<span><span class="co">#&gt;        sexual_orientation              heterosexual          household_income </span></span>
+<span><span class="co">#&gt;                         0                         0                         0 </span></span>
+<span><span class="co">#&gt;           contact_covid19        risk_group_covid19       number_people_house </span></span>
+<span><span class="co">#&gt;                         0                         0                         0 </span></span>
+<span><span class="co">#&gt;              benzofreq_w1              benzofreq_w2              benzofreq_w3 </span></span>
+<span><span class="co">#&gt;                         0                         0                         0 </span></span>
+<span><span class="co">#&gt;    family_relationship_w1    family_relationship_w2    family_relationship_w3 </span></span>
+<span><span class="co">#&gt;                         0                         0                         0 </span></span>
+<span><span class="co">#&gt;    friend_relationship_w1    friend_relationship_w2    friend_relationship_w3 </span></span>
+<span><span class="co">#&gt;                         0                         0                         0 </span></span>
+<span><span class="co">#&gt;    loving_relationship_w1    loving_relationship_w2    loving_relationship_w3 </span></span>
+<span><span class="co">#&gt;                         0                         0                         0 </span></span>
+<span><span class="co">#&gt;      social_distancing_w1      social_distancing_w2      social_distancing_w3 </span></span>
+<span><span class="co">#&gt;                         0                         0                         0 </span></span>
+<span><span class="co">#&gt; family_friends_covid19_w1 family_friends_covid19_w2 family_friends_covid19_w3 </span></span>
+<span><span class="co">#&gt;                         0                         0                         0 </span></span>
+<span><span class="co">#&gt;     diagnostic_covid19_w1     diagnostic_covid19_w2     diagnostic_covid19_w3 </span></span>
+<span><span class="co">#&gt;                         0                         0                         0 </span></span>
+<span><span class="co">#&gt;          sleep_quality_w1          sleep_quality_w2          sleep_quality_w3 </span></span>
+<span><span class="co">#&gt;                         0                         0                         0 </span></span>
+<span><span class="co">#&gt;      suicidal_ideation_w1      suicidal_ideation_w2      suicidal_ideation_w3 </span></span>
+<span><span class="co">#&gt;                         0                         0                         0 </span></span>
+<span><span class="co">#&gt;              phq_total_w1              phq_total_w2              phq_total_w3 </span></span>
+<span><span class="co">#&gt;                         0                         0                         0 </span></span>
+<span><span class="co">#&gt;              gad_total_w1              gad_total_w2              gad_total_w3 </span></span>
+<span><span class="co">#&gt;                         0                         0                         0</span></span></code></pre></div>
+<p>As we can see in the output above, we don’t have any variable with
+missing values. That’s nice!</p>
 </div>
 <div class="section level2">
 <h2 id="anxiety-and-depression-levels-by-wave">Anxiety and depression levels by wave<a class="anchor" aria-label="anchor" href="#anxiety-and-depression-levels-by-wave"></a>
 </h2>
 <p>Now let’s create some plots to see the trajectories of the anxiety
 and depression measures in the sample.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">all_waves</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">BenzoCovid</span><span class="fu">::</span><span class="fu"><a href="../reference/plot_three_waves.html">plot_three_waves</a></span><span class="op">(</span><span class="st">"phq_total"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Study wave"</span>, y <span class="op">=</span> <span class="st">"PHQ-9 total score mean"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="all_waves_eda_files/figure-html/anxiety-and-depression-1.png" width="700"></p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">all_waves</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu">BenzoCovid</span><span class="fu">::</span><span class="fu"><a href="../reference/plot_three_waves.html">plot_three_waves</a></span><span class="op">(</span><span class="st">"gad_total"</span><span class="op">)</span> <span class="op">+</span></span>
