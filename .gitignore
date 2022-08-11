@@ -6,3 +6,6 @@
 data/
 inst/extdata/
 inst/doc
+/doc/
+/Meta/
+docs

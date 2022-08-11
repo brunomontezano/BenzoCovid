@@ -14,3 +14,13 @@ Depends:
 LazyData: true
 URL: https://github.com/brunomontezano/BenzoCovid
 BugReports: https://github.com/brunomontezano/BenzoCovid/issues
+Suggests: 
+    knitr,
+    rmarkdown,
+    skimr
+VignetteBuilder: knitr
+Imports: 
+    dplyr,
+    ggplot2,
+    readr,
+    tidyr

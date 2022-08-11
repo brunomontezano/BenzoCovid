@@ -1,0 +1,51 @@
+---
+title: "All Waves EDA"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{All Waves EDA}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## First look 
+
+Initially, we are going to load the data from the package to be using for the
+exploratory data analysis.
+
+```{r import}
+data("all_waves", package = "BenzoCovid")
+```
+
+First, let's take a glimpse and skim the dataset.
+
+```{r explore}
+dplyr::glimpse(all_waves)
+
+skimr::skim(all_waves)
+```
+
+As we can see in the `skim`, we don't have any variable with missing values.
+That's nice!
+
+## Anxiety and depression levels by wave
+
+Now let's create some plots to see the trajectories of the anxiety and depression measures in the sample.
+
+```{r anxiety-and-depression}
+all_waves |> 
+    BenzoCovid::plot_three_waves("phq_total") +
+    ggplot2::labs(x = "Study wave", y = "PHQ-9 total score mean")
+
+all_waves |> 
+    BenzoCovid::plot_three_waves("gad_total") +
+    ggplot2::labs(x = "Study wave", y = "GAD-7 total score mean")
+```
+
+Apparently, we were able to see a decline in both measures, which indicates that people were showing remission of symptoms over time.
