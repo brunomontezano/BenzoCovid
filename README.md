@@ -17,3 +17,7 @@ You can install the development version of BenzoCovid like so:
 ``` r
 remotes::install_github("brunomontezano/BenzoCovid")
 ```
+
+## Contact
+
+Feel free to contact me at <bmontezano@hcpa.edu.br>.
