@@ -23,12 +23,10 @@ exploratory data analysis.
 data("all_waves", package = "BenzoCovid")
 ```
 
-First, let's take a glimpse and skim the dataset.
+First, let's take a glimpse at the dataset.
 
 ```{r explore}
 dplyr::glimpse(all_waves)
-
-skimr::skim(all_waves)
 ```
 
 As we can see in the `skim`, we don't have any variable with missing values.

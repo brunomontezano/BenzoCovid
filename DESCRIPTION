@@ -25,8 +25,7 @@ URL: https://github.com/brunomontezano/BenzoCovid
 BugReports: https://github.com/brunomontezano/BenzoCovid/issues
 Suggests: 
     knitr,
-    rmarkdown,
-    skimr
+    rmarkdown
 VignetteBuilder: knitr
 Imports: 
     dplyr,
