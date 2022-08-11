@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# BenzoCovid <img src="man/figures/hexlogo.png" align="right" width = "120px"/>
+# BenzoCovid <img src="man/figures/logo.png" align="right" width = "120px"/>
 
 <!-- badges: start -->
 <!-- badges: end -->
