@@ -64,7 +64,4 @@ all_waves
 Dataset containing information about
 subjects in COVID-19 period and mental health data.
 }
-\examples{
-head(all_waves)
-}
 \keyword{datasets}

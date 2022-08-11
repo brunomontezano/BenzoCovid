@@ -53,5 +53,4 @@
 #' }
 #' @name all_waves
 #' @source COVID-19 cohort study from research group at Federal University of Rio Grande do Sul.
-#' @examples head(all_waves)
 "all_waves"
