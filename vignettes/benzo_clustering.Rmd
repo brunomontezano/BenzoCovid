@@ -63,55 +63,82 @@ fig <- plotly::plot_ly(benzo_frequencies,
 
 fig <- fig |>  plotly::add_markers()
 
-fig <- fig |> 
-    plotly::layout(scene = list(
-        xaxis = list(title = "Wave 1"),
-        yaxis = list(title = "Wave 2"),
-        zaxis = list(title = "Wave 3")))
+fig <- fig |>
+    plotly::layout(title = "Benzodiazepine Use Frequency in Each Wave",
+                   scene = list(
+                       xaxis = list(title = "Wave 1"),
+                       yaxis = list(title = "Wave 2"),
+                       zaxis = list(title = "Wave 3")
+                   ))
 
 
 fig
 ```
 
+## K-means clustering
+
+We start fitting three clustering models, from 1 to 5 clusters in order to find
+out the best number of clusters in our dataset.
+
+```{r clustering}
+set.seed(1)
+
+benzo_kmeans <- 
+  tibble::tibble(k = 1:5) |> 
+  dplyr::mutate(
+    kclust = purrr::map(k, ~kmeans(benzo_frequencies, .x)),
+    tidied = purrr::map(kclust, broom::tidy),
+    glanced = purrr::map(kclust, broom::glance),
+    augmented = purrr::map(kclust, broom::augment, benzo_frequencies)
+  )
+```
+
+Here, we can check which number of clusters behaves the best. We need to see the
+least amount of "distance" between the observations in the same cluster, and try
+to minimize the number of clusters used in order to keep a parsimonious model.
+
+```{r check-distance, warning = FALSE, message = FALSE}
+benzo_kmeans |> 
+  tidyr::unnest(cols = c(glanced)) |> 
+    ggplot2::ggplot(ggplot2::aes(x = k, y = tot.withinss)) +
+    ggplot2::geom_line() +
+    ggplot2::geom_point(size = 4, color = "darkslateblue") +
+    ggplot2::theme_minimal(base_size = 20) +
+    ggplot2::labs(title = "What's the optimal number of clusters?",
+                  x = "# of clusters",
+                  y = "Within sum of squares function") +
+    gghighlight::gghighlight(k == 2)
+```
+
+As we can see, this represents the variance within the clusters. It decreases as
+*k* increases, but notice a bend (or "elbow") around *k* = 2. This bend
+indicates that additional clusters beyond the second have little value for us.
+
+Now, we can see the mean values of each variable for each of the clusters.
+I have given myself the right to name the clusters as frequent use and
+infrequent use of benzodiazepines.
+
 ```{r}
-library(plotly)
-
-data <- read.csv("https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv")
-
-data_2007 <- data[which(data$year == 2007),]
-data_2007 <- data_2007[order(data_2007$continent, data_2007$country),]
-data_2007$size <- data_2007$pop
-colors <- c('#4AC6B7', '#1972A4', '#965F8A', '#FF7070', '#C61951')
-
-fig <- plot_ly(data_2007, x = ~gdpPercap, y = ~lifeExp, z = ~pop, color = ~continent, size = ~size, colors = colors,
-             marker = list(symbol = 'circle', sizemode = 'diameter'), sizes = c(5, 150),
-             text = ~paste('Country:', country, '<br>Life Expectancy:', lifeExp, '<br>GDP:', gdpPercap,
-                           '<br>Pop.:', pop))
-fig <- fig %>% layout(title = 'Life Expectancy v. Per Capita GDP, 2007',
-         scene = list(xaxis = list(title = 'GDP per capita (2000 dollars)',
-                      gridcolor = 'rgb(255, 255, 255)',
-                      range = c(2.003297660701705, 5.191505530708712),
-                      type = 'log',
-                      zerolinewidth = 1,
-                      ticklen = 5,
-                      gridwidth = 2),
-               yaxis = list(title = 'Life Expectancy (years)',
-                      gridcolor = 'rgb(255, 255, 255)',
-                      range = c(36.12621671352166, 91.72921793264332),
-                      zerolinewidth = 1,
-                      ticklen = 5,
-                      gridwith = 2),
-               zaxis = list(title = 'Population',
-                            gridcolor = 'rgb(255, 255, 255)',
-                            type = 'log',
-                            zerolinewidth = 1,
-                            ticklen = 5,
-                            gridwith = 2)),
-         paper_bgcolor = 'rgb(243, 243, 243)',
-         plot_bgcolor = 'rgb(243, 243, 243)')
-
-fig
-
+two_clusters <- benzo_kmeans |> 
+    dplyr::pull(kclust) |> 
+    purrr::pluck(2)
+    
+two_clusters |> 
+    purrr::pluck("centers") |> 
+    base::as.data.frame() |> 
+    tibble::rowid_to_column("Cluster") |> 
+    dplyr::mutate(
+        Cluster = dplyr::if_else(
+            Cluster == 1, "Infrequent use",
+            "Frequent use"
+        )
+    ) |> 
+    dplyr::rename(
+        "Wave 1" = benzofreq_w1,
+        "Wave 2" = benzofreq_w2,
+        "Wave 3" = benzofreq_w3
+        ) |> 
+    knitr::kable(digits = 3, row.names = FALSE)
 ```
 
 
