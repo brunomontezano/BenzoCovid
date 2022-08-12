@@ -119,6 +119,9 @@ Now, we can see the mean values of each variable for each of the clusters.
 I have given myself the right to name the clusters as frequent use and
 infrequent use of benzodiazepines.
 
+The frequent use cluster contains 86 subjects, and the infrequent use cluster
+contains 695 subjects.
+
 ```{r}
 two_clusters <- benzo_kmeans |> 
     dplyr::pull(kclust) |> 

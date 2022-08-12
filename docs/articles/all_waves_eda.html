@@ -197,6 +197,20 @@ and depression measures in the sample.</p>
 <p>Apparently, we were able to see a decline in both measures, which
 indicates that people were showing remission of symptoms over time.</p>
 </div>
+<div class="section level2">
+<h2 id="benzodiazepine-use-frequency-between-waves">Benzodiazepine use frequency between waves<a class="anchor" aria-label="anchor" href="#benzodiazepine-use-frequency-between-waves"></a>
+</h2>
+<p>This figure is in brazilian portuguese because of the original
+labels.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">all_waves</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu">BenzoCovid</span><span class="fu">::</span><span class="fu"><a href="../reference/plot_three_waves.html">plot_three_waves</a></span><span class="op">(</span><span class="st">"benzofreq"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Frequência de uso de benzodiazepínicos"</span>, y <span class="op">=</span> <span class="st">"# de sujeitos"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">15</span>, size <span class="op">=</span> <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="all_waves_eda_files/figure-html/benzofreq-in-waves-1.png" width="700"></p>
+<p>The frequency pattern looks more or less stable as the time
+passes.</p>
+</div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
 </div>

@@ -53,3 +53,15 @@ all_waves |>
 
 Apparently, we were able to see a decline in both measures, which indicates that people were showing remission of symptoms over time.
 
+## Benzodiazepine use frequency between waves
+
+This figure is in brazilian portuguese because of the original labels.
+
+```{r benzofreq-in-waves}
+all_waves |> 
+    BenzoCovid::plot_three_waves("benzofreq") +
+    ggplot2::labs(x = "Frequência de uso de benzodiazepínicos", y = "# de sujeitos") +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 15, size = 6))
+```
+
+The frequency pattern looks more or less stable as the time passes.
