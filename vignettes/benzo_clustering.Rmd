@@ -52,27 +52,28 @@ the three assessment waves. In general, there is no great variation in the
 use frequency pattern in the sample.
 
 ```{r}
-fig <- plotly::plot_ly(benzo_frequencies,
-                       x = ~benzofreq_w1,
-                       y = ~benzofreq_w2,
-                       z = ~benzofreq_w3,
-                       text = ~paste("Wave 1:", benzofreq_w1,
-                                     "<br>Wave 2:", benzofreq_w2,
-                                     "<br>Wave 3:", benzofreq_w3),
-                       hoverinfo = "text")
-
-fig <- fig |>  plotly::add_markers()
-
-fig <- fig |>
+plotly::plot_ly(
+    benzo_frequencies,
+    x = ~ benzofreq_w1,
+    y = ~ benzofreq_w2,
+    z = ~ benzofreq_w3,
+    text = ~ paste(
+        "Wave 1:",
+        benzofreq_w1,
+        "<br>Wave 2:",
+        benzofreq_w2,
+        "<br>Wave 3:",
+        benzofreq_w3
+    ),
+    hoverinfo = "text"
+) |>
+    plotly::add_markers() |>
     plotly::layout(title = "Benzodiazepine Use Frequency in Each Wave",
                    scene = list(
                        xaxis = list(title = "Wave 1"),
                        yaxis = list(title = "Wave 2"),
                        zaxis = list(title = "Wave 3")
                    ))
-
-
-fig
 ```
 
 ## K-means clustering

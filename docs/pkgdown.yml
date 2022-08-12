@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   all_waves_eda: all_waves_eda.html
   benzo_clustering: benzo_clustering.html
-last_built: 2022-08-12T19:49Z
+last_built: 2022-08-12T19:52Z
 urls:
   reference: https://brunomontezano.github.io/BenzoCovid/reference
   article: https://brunomontezano.github.io/BenzoCovid/articles
