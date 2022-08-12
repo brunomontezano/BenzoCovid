@@ -27,7 +27,10 @@ Suggests:
     knitr,
     rmarkdown,
     purrr,
-    plotly
+    plotly,
+    broom,
+    gghighlight,
+    tibble
 VignetteBuilder: knitr
 Imports: 
     dplyr,
