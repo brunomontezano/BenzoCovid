@@ -26,7 +26,8 @@ BugReports: https://github.com/brunomontezano/BenzoCovid/issues
 Suggests: 
     knitr,
     rmarkdown,
-    purrr
+    purrr,
+    plotly
 VignetteBuilder: knitr
 Imports: 
     dplyr,
