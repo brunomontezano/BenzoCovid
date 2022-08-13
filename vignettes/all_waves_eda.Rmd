@@ -39,7 +39,8 @@ That's nice!
 
 ## Anxiety and depression levels by wave
 
-Now let's create some plots to see the trajectories of the anxiety and depression measures in the sample.
+Now let's create some plots to see the trajectories of the anxiety and
+depression measures in the sample.
 
 ```{r anxiety-and-depression}
 all_waves |> 
@@ -51,7 +52,8 @@ all_waves |>
     ggplot2::labs(x = "Study wave", y = "GAD-7 total score mean")
 ```
 
-Apparently, we were able to see a decline in both measures, which indicates that people were showing remission of symptoms over time.
+Apparently, we were able to see a decline in both measures, which indicates that
+people were showing remission of symptoms over time.
 
 ## Benzodiazepine use frequency between waves
 
