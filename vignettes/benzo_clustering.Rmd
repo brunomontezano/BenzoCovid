@@ -145,4 +145,24 @@ two_clusters |>
     knitr::kable(digits = 3, row.names = FALSE)
 ```
 
+## Join original data with cluster information
+
+```{r add-clusters-to-data}
+clustered_data <- two_clusters |> 
+    purrr::pluck("cluster") |> 
+    tibble::as_tibble_col("cluster") |> 
+    dplyr::mutate(cluster = dplyr::if_else(
+        cluster == 1, "Infrequent", "Frequent"
+    )) |> 
+    dplyr::bind_cols(all_waves)
+
+utils::head(clustered_data)
+```
+
+## Is the pattern of suicidal ideation different between clusters? 
+
+```{r suicidal-ideation}
+BenzoCovid::grouped_count(clustered_data, "cluster", "suicidal_ideation_w1")
+```
+
 
